@@ -41,6 +41,15 @@ public class copyFileDemo1 {
         }finally {
             //4.释放缓存
             //注意：为了避免输入流或者输出流对象未能创建成功而导致关闭流操作异常，所以在释放资源前要加上判断
+            //注意：为了放置数据传输过程出现异常：采用先打开的数据流后关闭
+            if (output != null){
+                try {
+                    output.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
             if (input != null){
                 try {
                     input.close();
@@ -49,13 +58,6 @@ public class copyFileDemo1 {
                 }
             }
 
-            if (output != null){
-                try {
-                    output.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
 
     }
