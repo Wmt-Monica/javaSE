@@ -19,16 +19,18 @@ public class StackDemo2 {
             manage.pop();
         }
 
-        String s = "12*3-5/2*5+4/3*7-8/3";
-        System.out.println("12*3-5/2*5+4/3*7-8/3="+manage.Calculation(s));
+        System.out.println(manage.FoundLastNode(manage.top));
 
-        System.out.println("\n===============================");
-        String s1 = "(({[]}))";
-        String s2 = "({[}])";
-        String s3 = "(){[]}";
-        System.out.println("s1是否为有效字符串："+manage.isMate(s1));
-        System.out.println("s2是否为有效字符串："+manage.isMate(s2));
-        System.out.println("s3是否为有效字符串："+manage.isMate(s3));
+//        String s = "12*3-5/2*5+4/3*7-8/3";
+//        System.out.println("12*3-5/2*5+4/3*7-8/3="+manage.Calculation(s));
+//
+//        System.out.println("\n===============================");
+//        String s1 = "(({[]}))";
+//        String s2 = "({[}])";
+//        String s3 = "(){[]}";
+//        System.out.println("s1是否为有效字符串："+manage.isMate(s1));
+//        System.out.println("s2是否为有效字符串："+manage.isMate(s2));
+//        System.out.println("s3是否为有效字符串："+manage.isMate(s3));
 
         /**
          * 中缀表达式转换成后缀表达式 （未实现）
@@ -413,6 +415,14 @@ class Node3Manage{
         while (!s2.isEmpty()){
             System.out.print(s2.pop()+"\t");
         }
+    }
+
+    //查找单链表中最后一个值
+    public int  FoundLastNode(Node3 node){
+        if (node.next != null){
+            FoundLastNode(node.next);
+        }
+        return node.num;
     }
 }
 
