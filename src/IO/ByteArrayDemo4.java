@@ -1,4 +1,8 @@
 package IO;
+/**
+ * 1.将文件和字节之前的方法来进行分装
+ * 2.同时关闭流的方法使用两种方法进行试验的操作
+ */
 
 import java.io.*;
 
@@ -28,14 +32,8 @@ public class ByteArrayDemo4 {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            if (input != null){
-                try {
-                    input.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        }finally {  //关闭流的方法一：在最后finally里面使用分装后的close方法
+            close(input);
         }
         return output.toByteArray();
     }
@@ -43,11 +41,9 @@ public class ByteArrayDemo4 {
     //方法二：将字节数组数据转换成文件
     public static void byteArrayToFile(byte[] data,String src){
         File file = new File(src);
-        OutputStream output = null;
         ByteArrayInputStream input = null;
 
-        try {
-            output = new FileOutputStream(file);
+        try(OutputStream output = new FileOutputStream(file)) {  //关闭流的方法二：将要关闭的流的声明放在try()里面
             input = new ByteArrayInputStream(data);
 
             int length = -1;
@@ -60,10 +56,15 @@ public class ByteArrayDemo4 {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            if (output != null){
+        }
+    }
+
+    //将关闭流的操作进行分装
+    public static void close(Closeable... io){  //...表示可以存放任意个的流类型，进行关闭流的操作
+        for (Closeable i : io){
+            if (i != null){
                 try {
-                    output.close();
+                    i.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
