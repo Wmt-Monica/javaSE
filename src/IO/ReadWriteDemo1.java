@@ -20,6 +20,7 @@ public class ReadWriteDemo1 {
             //使用read()方法读取的是其祖父，故因此不能使用字节来当临时数据存储变量
             /**
              * 注意，在使用BufferedReader/BufferedWriter修饰类读取和写入数据都是一行一行的进行的
+             * 并且只适用于文本文件之间的操作
              */
             //故因此一下的内容需要进行调整
             String line = ""; //不再使用字符数组来储存数据，而是字符串
