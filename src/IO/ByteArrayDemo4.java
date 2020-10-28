@@ -20,7 +20,7 @@ public class ByteArrayDemo4 {
         InputStream input = null;
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         try {
-            input = new FileInputStream(file);
+            input = new BufferedInputStream( new FileInputStream(file));
 
             int length = -1;
             byte[] flush = new byte[1024];
@@ -43,7 +43,7 @@ public class ByteArrayDemo4 {
         File file = new File(src);
         ByteArrayInputStream input = null;
 
-        try(OutputStream output = new FileOutputStream(file)) {  //关闭流的方法二：将要关闭的流的声明放在try()里面
+        try(OutputStream output = new BufferedOutputStream( new FileOutputStream(file))) {  //关闭流的方法二：将要关闭的流的声明放在try()里面
             input = new ByteArrayInputStream(data);
 
             int length = -1;

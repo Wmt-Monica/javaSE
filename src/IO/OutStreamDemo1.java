@@ -20,7 +20,7 @@ public class OutStreamDemo1 {
             //创建outStream的子类FileOutputStream对象
             //注意：使用OutputStream输出流创建的文件对象即使不存在也会帮你重新按照该路径创建新的文件
             //注意：此处创建对象中有一个重载方法，可以在其后面田家庵布尔参数，用于选择是否在文件后面追加（true），或者是覆盖（false）
-            output = new FileOutputStream(file,true);
+            output = new BufferedOutputStream( new FileOutputStream(file,true));
 
             //3.操作（写内容）
             String s = "WMT IS VERY BEAUTY\n";

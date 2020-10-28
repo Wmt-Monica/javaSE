@@ -1,5 +1,6 @@
 package IO;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +20,11 @@ public class ByteArrayDemo1 {
         //2.数据流的选择
         InputStream input = null;
         //选择字节数组输入流
-        input = new ByteArrayInputStream(src);
+        /*注意：使用BufferedInputStream/BufferedOutputStream相当于是属于一种修饰类，
+               采取使用JVM虚拟机来通知垃圾回收机制来释放资源，使其性能更好
+               运行速度更快
+         */
+        input = new BufferedInputStream( new ByteArrayInputStream(src));
 
         int length = -1;
         byte[] flush = new byte[2];

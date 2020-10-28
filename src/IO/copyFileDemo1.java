@@ -19,8 +19,8 @@ public class copyFileDemo1 {
         byte[] flush = new byte[4];  //输入流读取数据的暂时缓存字节数组
         int length = -1;  //设置读取数据的有效长度变量
         try {
-            input = new FileInputStream(inputFile);  //创建输入流对象
-            output = new FileOutputStream(outputFile,true);  //创建输出流对象
+            input = new BufferedInputStream( new FileInputStream(inputFile));  //创建输入流对象
+            output = new BufferedOutputStream( new FileOutputStream(outputFile,true));  //创建输出流对象
 
             while ((length = input.read(flush)) != -1){  //当未读取到数据的最后
 //                String data1 = new String(flush,0,length);  //将读取到的数据的字节码解码成字符串

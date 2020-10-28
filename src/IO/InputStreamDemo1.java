@@ -17,7 +17,7 @@ public class InputStreamDemo1 {
         InputStream input = null;
         try {
             //2.选择流（例如：选择InputStream字节流）
-            input = new FileInputStream(file); //数据可能会读取失败，故应此要用try/catch或者throw抛出异常
+            input = new BufferedInputStream( new FileInputStream(file)); //数据可能会读取失败，故应此要用try/catch或者throw抛出异常
 
             //3.操作（例如：使用read()方法读取数据）注意：read()方法返回的是int型数据类型
             //当读取数据时，读到数据的最后read()时返回-1

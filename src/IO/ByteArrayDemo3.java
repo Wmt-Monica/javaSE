@@ -21,7 +21,7 @@ public class ByteArrayDemo3 {
 
         try {
             //选择数据流
-            input = new FileInputStream(inputFile);
+            input = new BufferedInputStream( new FileInputStream(inputFile));
             ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
             int length = -1;
             byte[] flush = new byte[1024];
@@ -54,7 +54,7 @@ public class ByteArrayDemo3 {
         OutputStream output = null;
         try {
             //选择数数据流
-            output = new FileOutputStream(file);
+            output = new BufferedOutputStream( new FileOutputStream(file));
             ByteArrayInputStream input = new ByteArrayInputStream(data);
 
             //读取数据

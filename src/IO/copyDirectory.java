@@ -33,8 +33,8 @@ public class copyDirectory {
     public static void CopyFileData(File inputFile,File outputFile){
         try {
             //1.数据源的选择
-            InputStream input = new FileInputStream(inputFile);
-            OutputStream output = new FileOutputStream(outputFile);
+            InputStream input = new BufferedInputStream( new FileInputStream(inputFile));
+            OutputStream output = new BufferedOutputStream( new FileOutputStream(outputFile));
 
             //2.拷贝的操作
             byte[] flush = new byte[20];  //写入数据的中间缓存字节数组（20字节）

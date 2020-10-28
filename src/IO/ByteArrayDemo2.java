@@ -1,5 +1,6 @@
 package IO;
 
+import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -19,7 +20,12 @@ public class ByteArrayDemo2 {
         //2.选择数据流
         OutputStream output = null;
         //选择ByteArrayOutputStream
-        output = new ByteArrayOutputStream();
+        //选择字节数组输入流
+        /*注意：使用BufferedInputStream/BufferedOutputStream相当于是属于一种修饰类，
+               采取使用JVM虚拟机来通知垃圾回收机制来释放资源，使其性能更好
+               运行速度更快
+         */
+        output = new BufferedOutputStream( new ByteArrayOutputStream());
 
         //3.操作
         String s = "WMT is very beauty!";
