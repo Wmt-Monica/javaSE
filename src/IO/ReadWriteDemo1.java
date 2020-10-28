@@ -24,7 +24,7 @@ public class ReadWriteDemo1 {
              */
             //故因此一下的内容需要进行调整
             String line = ""; //不再使用字符数组来储存数据，而是字符串
-            while ((line = reader.readLine()) != null){
+            while ((line = reader.readLine()) != null){  //判断读取结束条件是不等于null
                 //使用write写入数据，注意，此处数据是一行一行的写入，因为读取得到的data就是一整行的数据
                 writer.write(line);
 
