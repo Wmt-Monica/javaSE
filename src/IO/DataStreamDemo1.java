@@ -12,7 +12,9 @@ public class DataStreamDemo1 {
         ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
         //使用数据流DataOutputStream用来接收各种数据类型的数据
         //为为了提高性能使用BufferedOutputStream
-        DataOutputStream output = new DataOutputStream( new BufferedOutputStream(byteArray));
+        DataOutputStream output =
+                new DataOutputStream(
+                        new BufferedOutputStream(byteArray));
 
         //output是输入流对象，是一个用于数据输入的渠道
         //使用数据流的写入方法 数据类型+数据
