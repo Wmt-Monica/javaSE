@@ -1,8 +1,6 @@
 package IO;
 
 import java.io.*;
-import java.util.Random;
-import java.util.RandomAccess;
 
 /**
  * 随即读取和写入的流
