@@ -5,6 +5,7 @@ import java.io.*;
 /**
  * 数据流：
  * DataInputStream / DataOutputStream
+ * 注意：之后遇到将某数据转成字节数组，或者求这些数据占用了多少字节，都可以使用ByteArrayOutputStream来实现
  */
 public class DataStreamDemo1 {
     public static void main(String[] args) {
