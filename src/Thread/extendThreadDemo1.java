@@ -30,5 +30,6 @@ public class extendThreadDemo1 extends Thread {  //继承多线程父类Thread
             System.out.println("普通方法2的调用");
         }
         thread.start();
+        System.out.println("\n\n========================================================\n");
     }
 }
