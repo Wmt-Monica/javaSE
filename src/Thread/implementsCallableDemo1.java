@@ -13,7 +13,7 @@ import java.util.concurrent.*;
  * 3.实现Callable接口（不常用）
  *
  * 案例：实现下载网络图片资源
- * (会按照其中的方法会用即可，现在不用过于深入)
+ * (会按照其中的方法会用即可， 现在不用过于深入)
  */
 public class implementsCallableDemo1 {
     public static void main(String[] args) {
