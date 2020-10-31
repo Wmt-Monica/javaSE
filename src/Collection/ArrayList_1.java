@@ -1,7 +1,5 @@
 package Collection;
 
-import ShuZu.MaoPao;
-
 import java.util.Scanner;
 
 public class ArrayList_1<E> {  //添加泛型<E>
