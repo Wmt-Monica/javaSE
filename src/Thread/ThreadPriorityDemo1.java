@@ -9,7 +9,7 @@ package Thread;
  *          Thread.NORM PRIORITY = 5 (默认)
  *      2.优先级的设定建议在start()调用前
  *      3.优先级的高低只是被调用的概率变大，不代表绝对的先后顺序
- */
+ * */
 public class ThreadPriorityDemo1 {
     public static void main(String[] args) {
 
