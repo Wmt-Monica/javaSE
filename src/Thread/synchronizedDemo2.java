@@ -87,30 +87,36 @@ class DrawMoney implements Runnable{
     }
 
     //存钱方法
-    public synchronized void CunMoney(int money){
-        this.user.setCount(this.user.getCount()+money);
-        this.balance -= money;
+    public void CunMoney(int money){
+        synchronized (this){
+            this.user.setCount(this.user.getCount()+money);
+            this.balance -= money;
+        }
         System.out.println(Thread.currentThread().getName()+"用户存入"+money+"元，" +
                 "卡中总余额："+this.user.getCount()+"\n"+Thread.currentThread().getName()+
                 "手中持有金额"+this.balance+"\n============================\n");
     }
 
     //取钱方法
-    public synchronized void QuMoney(int money) throws InterruptedException {
+    public void QuMoney(int money) throws InterruptedException {
         if ((money > this.user.getCount()) && (this.user.getCount() > 0)){
             System.out.println("银行余额不足1500元....");
             Thread.sleep(500);
             System.out.println("于是"+Thread.currentThread().getName()+"取走了剩余银行卡里所有的钱");
             Thread.sleep(500);
             int step = this.user.getCount();
-            this.user.setCount(this.user.getCount()-this.user.getCount());
-            this.balance += this.user.getCount();
+            synchronized (this){
+                this.user.setCount(this.user.getCount()-this.user.getCount());
+                this.balance += this.user.getCount();
+            }
             System.out.println(Thread.currentThread().getName()+"用户取走"+step+"元，" +
                     "卡中总余额："+this.user.getCount()+"\n"+Thread.currentThread().getName()+
                     "手中持有金额"+this.balance+"\n============================\n");
         }else if ( this.user.getCount() > 0){
-            this.user.setCount(this.user.getCount()-money);
-            this.balance += money;
+            synchronized (this){
+                this.user.setCount(this.user.getCount()-money);
+                this.balance += money;
+            }
             System.out.println(Thread.currentThread().getName()+"用户取走"+money+"元，" +
                     "卡中总余额："+this.user.getCount()+"\n"+Thread.currentThread().getName()+
                     "手中持有金额"+this.balance+"\n============================\n");
