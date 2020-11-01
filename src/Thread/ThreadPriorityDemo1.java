@@ -47,6 +47,6 @@ public class ThreadPriorityDemo1 {
 class PriorityDemo1 implements Runnable{
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName() + "---->");
+        System.out.println(Thread.currentThread().getName() + "---->"+Thread.currentThread().getPriority());
     }
 }
