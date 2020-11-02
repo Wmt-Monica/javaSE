@@ -30,7 +30,7 @@ public class synchronizedDemo2 {
 }
 
 class User{
-    private int Count;  //银行卡里面的总资金
+    private volatile int Count;  //银行卡里面的总资金  volatile(关键字)：可见性，在线程很快的进行刷新
 
     public User(int count) {
         this.Count = count;
