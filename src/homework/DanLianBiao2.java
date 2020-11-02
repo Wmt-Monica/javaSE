@@ -1,6 +1,5 @@
 package homework;
 
-import java.time.chrono.HijrahEra;
 import java.util.Stack;
 
 //管理Hero对象的类
@@ -263,6 +262,19 @@ class HeroManage{
             return NewHeroMange;
         }
     }
+
+    int seat = 1;
+    //使用递归，根据值来查找位置
+    public int Found(Hero hero,String nameValue){
+        if (hero.name.equals("wmt5")){
+            return seat;
+        }else {
+            seat++;
+            hero = hero.next;
+            Found(hero,nameValue);
+        }
+        return seat;
+    }
 }
 
 public class DanLianBiao2 {
@@ -347,6 +359,10 @@ public class DanLianBiao2 {
         HeroManage NewHeroMange = heroManage1.MergeHero(heroManage2);
         System.out.println("===============合并后的新链表=================");
         System.out.println(NewHeroMange);
+
+        Hero hero = NewHeroMange.head.next;
+        int seat = NewHeroMange.Found(hero,"wmt5");
+        System.out.println("wmt5的位置："+seat);
     }
 }
 
