@@ -14,10 +14,10 @@ public class StackDemo2 {
         System.out.println("从栈顶开始遍历所有元素");
         manage.listNode();
 
-        System.out.println("\n从栈顶开始全部出栈所有元素");
-        for (int i = 0; i < 10; i++){
-            manage.pop();
-        }
+//        System.out.println("\n从栈顶开始全部出栈所有元素");
+//        for (int i = 0; i < 10; i++){
+//            manage.pop();
+//        }
 
         System.out.println(manage.FoundLastNode(manage.top));
 
@@ -38,6 +38,13 @@ public class StackDemo2 {
 //        String s2 = "( 3 + 4 ) * 5 - 6";
 //        manage.Postfix(s2);
 
+        Node3 found = manage.top.next;
+        System.out.println("值为0的位置："+manage.Found(found,0));
+        System.out.println("值为1的位置："+manage.Found(found,1));
+        System.out.println("值为2的位置："+manage.Found(found,2));
+        System.out.println("值为3的位置："+manage.Found(found,3));
+        System.out.println("值为4的位置："+manage.Found(found,4));
+
     }
 }
 
@@ -46,6 +53,24 @@ class Node3Manage{
 
     //设置头节点
     Node3 top = null;
+    int seat = 0;
+
+    //使用递归的方法，传入一个数据参数，查找其他的位置
+    public int Found(Node3 found,int value){
+        if (isEmpty()){
+            System.out.println("链表为空，为查找到任何值");
+        }else {
+            if (found.num == value){
+                return seat;
+            }else {
+                seat++;
+                found = found.next;
+                Found(found,value);
+            }
+        }
+        return seat;
+    }
+
 
     //判断栈是否为空
     public boolean isEmpty(){
