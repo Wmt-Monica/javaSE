@@ -11,7 +11,7 @@ import java.util.List;
  *  注意：以上三种方法调用必须在 synchronized 语句块中才能被执行
  *        且锁住的对象与我们控制等待或者是释放的对象保持一致
  *
- * 案例：生产汉堡的店面
+ * 案例：生产汉堡的店面（管道法）
  *      注意：这里商家和顾客是根据汉堡容器来进行交流的
  */
 public class ThreadWaitDemo1 {
