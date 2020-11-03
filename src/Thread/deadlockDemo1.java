@@ -6,6 +6,8 @@ package Thread;
  *
  * 案例：WMT占用着口红，SF占用着镜子，双方偶不释放自己所占有的资源，
  *      导致双方都不能完成化妆
+ *
+ * 避免死锁的发生:不要在同一个代码块，同时持有多个对象的锁
  */
 public class deadlockDemo1 {
     public static void main(String[] args) {
@@ -77,13 +79,22 @@ class MakeUpPeople implements Runnable{
                             e.printStackTrace();
                         }
 
-                        synchronized (this.mirror){  //当口红资源已经获得时尝试去占有镜子资源
+                        /**
+                         * 为了避免死锁的现象，不要嵌套锁着不同的对象，将要锁住的对象放在第一层锁住的对象的外面
+                         */
+                        /*synchronized (this.mirror){  //当口红资源已经获得时尝试去占有镜子资源
                             System.out.println(this.name+"占有了"+this.mirror.name);
                             choice++;  //获得资源加1
                             this.mirror.flag = true;  //确认已经占用了镜子资源
-                        }
-
+                        }*/
                     }
+
+                     synchronized (this.mirror){  //当口红资源已经获得时尝试去占有镜子资源
+                        System.out.println(this.name+"占有了"+this.mirror.name);
+                        choice++;  //获得资源加1
+                        this.mirror.flag = true;  //确认已经占用了镜子资源
+                     }
+
                 }else {  //如果当口红资源已经被占有，那么先尝试占有镜子资源
 
                     if (this.mirror.flag == false){  //当镜子资源未被占用时
@@ -99,13 +110,23 @@ class MakeUpPeople implements Runnable{
                                 e.printStackTrace();
                             }
 
-                            synchronized (this.lipstick){
+                            /**
+                             * 为了避免死锁的现象，不要嵌套锁着不同的对象，将要锁住的对象放在第一层锁住的对象的外面
+                             */
+                            /*synchronized (this.lipstick){
                                 System.out.println(this.name+"占有了"+this.lipstick.name);
                                 choice++;  //获得资源加1
                                 this.lipstick.flag = true;  //确认已经占用了口红资源
-                            }
+                            }*/
 
                         }
+
+                        synchronized (this.lipstick){
+                            System.out.println(this.name+"占有了"+this.lipstick.name);
+                            choice++;  //获得资源加1
+                            this.lipstick.flag = true;  //确认已经占用了口红资源
+                        }
+
                     }
                 }
 
