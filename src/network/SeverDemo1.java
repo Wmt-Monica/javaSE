@@ -3,14 +3,15 @@ package network;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
-
 /**
- * 发送端
- *      1.使用DatagramSocket 指定端口 创建发送端
- *      2.准备数据一定转成字节数组
- *      3.封装DatagramPacket包裹，需要指定目的地
- *      4.发送包裹send(DatagramPacket)
- *      5.释放资源
+ * 接收端：
+ * 1.使用DatagramSocket 指定端口 创建接收端
+ * 2.准备容器 封装成DatagramPacket 包裹
+ * 3.阻塞式接收包裹receive(DatagramPacket)
+ * 4.分析数据
+ *      byte[]  getData()
+ *              getLength()
+ * 5.释放资源
  */
 public class SeverDemo1 {
     public static void main(String[] args) throws IOException {
