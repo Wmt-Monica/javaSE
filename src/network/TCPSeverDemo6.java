@@ -49,12 +49,11 @@ public class TCPSeverDemo6 {
         //重写run()方法
         @Override
         public void run() {
-            System.out.print("客户端成功建立连接....");
+            System.out.println("客户端成功建立连接....");
 
             try {
                 //接收数据
-                System.out.println("====================");
-                System.out.print(receive());
+                System.out.println(receive());
                 //发送数据
                 send();
                 //释放资源
@@ -74,7 +73,6 @@ public class TCPSeverDemo6 {
                 String[] d = s.split(" = ");
                 User[i++] = d[1];
             }
-            System.out.println("UserName"+"---->"+User[0]+"\nUserPassword"+"---->"+User[1]);
             return("UserName"+"---->"+User[0]+"\nUserPassword"+"---->"+User[1]);
         }
 
@@ -85,7 +83,6 @@ public class TCPSeverDemo6 {
             if (User[0].equals("王梦婷") && User[1].equals("mengmengmeng0501")){
                 this.output.writeUTF("登录成功，欢迎回来....");
                 this.output.flush();
-                System.out.println("登录成功，欢迎回来....");
             }else {
                 this.output.writeUTF("用户名或者密码错误，请确认后重新登录....");
             }
