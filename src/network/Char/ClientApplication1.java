@@ -8,10 +8,9 @@ import java.net.Socket;
  */
 public class ClientApplication1 {
 	public static void main(String[] args) throws IOException {
-		Socket client1 = null;
 		int serverPort = 9999;
 		String client1Name = "王梦婷";
-		ChatClient charRoom1 = new ChatClient(client1, serverPort, client1Name);
+		ChatClient charRoom1 = new ChatClient(serverPort, client1Name);
 
 		charRoom1.start();
 	}

@@ -19,7 +19,6 @@ public class ChatClient {
 
     private Socket client;
 
-    private int serverPort;
 
     private DataOutputStream output = null;
 
@@ -29,9 +28,8 @@ public class ChatClient {
 
 
     //构造器
-    public ChatClient(Socket client, int serverPort, String name) throws IOException {
+    public ChatClient(int serverPort, String name) throws IOException {
         this.name = name;
-        this.serverPort = serverPort;
         //1.使用Socket创建客户端+服务地址和端口
         this.client = new Socket("localhost", serverPort);
     }
