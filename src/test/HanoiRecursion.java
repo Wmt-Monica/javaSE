@@ -3,7 +3,7 @@ package test;
 import java.util.LinkedList;
 import java.util.List;
 
-public class homework {
+public class HanoiRecursion {
     public static void main(String[] args) {
         List<Integer> A = new LinkedList<>();
         List<Integer> B = new LinkedList<>();
