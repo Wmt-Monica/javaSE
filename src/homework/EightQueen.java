@@ -45,9 +45,7 @@ public class EightQueen {
             return true;
         }
 
-        //4.创建一个清除八皇后位置的方法
-
-        //5.创建一个放置八个皇后的方法
+        //4.创建一个放置八个皇后的方法
         public void LayUpQueen(int queenNum){
 
             //如果八个皇后已经排好位置了就打印输出吧隔皇后的位置
