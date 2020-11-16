@@ -1,5 +1,6 @@
 package annotation;
 
+import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 
@@ -14,7 +15,19 @@ import java.lang.annotation.Target;
  * @Inherited
  */
 public class MetaAnnotation {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
+        Class c = Class.forName("annotation.MetaAnnotationException");
+
+        //获得类的所有注解  getAnnotations() 获取所有注解的方法，返回的是Annotation[]注解数组
+        //1.方法一：
+        Annotation[] annotation = c.getAnnotations();
+        for (Annotation a : annotation){
+            System.out.println(a);
+        }
+        //2.方法二：
+        MetaAnnotationException meta = (MetaAnnotationException) c.getAnnotation(MetaAnnotationException.class);
+        System.out.println(meta.s());
+
 
     }
     /**
@@ -54,4 +67,11 @@ public class MetaAnnotation {
      * CLASS    在class文件中有效（即class保留）
      * RUNTIME  在运行是有效（即运行时保留），为Runtime可以被反射机制读取
      */
+
+    //注意：如果注解中的惨呼数量就一个，那么我们可以直接省略注解名直接以数据传入参数
+    @MetaAnnotationException(s = "")
+    public void retention(){
+        String s = "石燔狗屎";
+    }
+
 }
